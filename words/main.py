@@ -44,6 +44,8 @@ def mem_test(word_type):
                 questions_num = int(inputnum)
             except:
                 pass
+    if questions_num >= maxlength * 2 // 3:
+        questions_num = maxlength * 2 // 3
     if questions_num % 2 != 0:
         questions_num -= 1
 
@@ -161,8 +163,8 @@ def display_word():
     def confirm_word_re(event):
         confirm_word()
     def confirm_word():
-        global questions_num
-        questions_num += 1
+        # global questions_num
+        # questions_num += 1
 
         word_type = 0
         origin_word = owEt.get()
@@ -191,7 +193,7 @@ def display_word():
         mem_test(0)
     def jpt():
         global questions_num
-        questions_num = questions_num * 2 // 3
+        questions_num_com = questions_num * 2 // 3
         mem_test(1)
     egBt = tk.Button(frame, text = '英语训练',command = engt, width = 50, font = "微软雅黑 10")
     egBt.grid(row = 2, column = 0, padx = 15, pady = 10)
