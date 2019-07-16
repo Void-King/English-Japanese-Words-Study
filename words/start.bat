@@ -1,1 +1,1 @@
-d:&cd D:\Code\Python&python ./words/main.py
+d:&cd D:/Code/Python/English-Japanese-Words-Study&python ./words/main.py

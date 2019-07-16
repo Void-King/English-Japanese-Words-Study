@@ -190,6 +190,8 @@ def display_word():
     def engt():
         mem_test(0)
     def jpt():
+        global questions_num
+        questions_num = questions_num * 2 // 3
         mem_test(1)
     egBt = tk.Button(frame, text = '英语训练',command = engt, width = 50, font = "微软雅黑 10")
     egBt.grid(row = 2, column = 0, padx = 15, pady = 10)
