@@ -1,0 +1,1 @@
+d:&cd D:\Code\Python&python ./words/main.py
