@@ -5,6 +5,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 import random
 import time
+import json
 
 import get_sound
 import get_trans
@@ -171,13 +172,16 @@ def display_word():
         if re.search('[A-z]+', origin_word) is None:
             word_type = 1
         if origin_word != '':
-            cn_word = get_trans.get_t(word_type, origin_word)
+            res = get_trans.get_t(word_type, origin_word)
+            cn_word = json.loads(res.text)['trans_result']['data'][0]['dst']
+            # print (cn_word)
+            # cn_word = get_trans.get_t(word_type, origin_word)
             label1.delete('1.0','end')
             label2.delete('1.0','end')
             label1.insert(INSERT, cn_word)
             cn_word_all = ''
             try:
-                cn_word_all = get_trans.get_allt(word_type, origin_word)
+                cn_word_all = get_trans.get_allt(res)
             except:
                 pass
             label2.insert(INSERT, cn_word_all)
