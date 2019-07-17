@@ -43,10 +43,10 @@ def mem_test(word_type):
             inputnum = input ('输入题目基数数量，不超过' + str(maxlength * 2 // 3) + '个:')
             try:
                 questions_num = int(inputnum)
-                if questions_num >= maxlength * 2 // 3:
-                    questions_num = maxlength * 2 // 3
                 if questions_num % 2 != 0:
                     questions_num -= 1
+                if questions_num >= maxlength * 2 // 3:
+                    questions_num = maxlength * 2 // 3
             except:
                 pass
 
