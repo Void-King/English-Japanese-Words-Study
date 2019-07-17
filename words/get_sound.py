@@ -50,5 +50,6 @@ def get_s(language_type, single_word, single_cn_word):
         record_txt_stream.close()
     else:
         pass
+    return save_flag
 # get_s(1, 'ねこ', '寻找')
 

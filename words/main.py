@@ -43,12 +43,12 @@ def mem_test(word_type):
             inputnum = input ('输入题目基数数量，不超过' + str(maxlength * 2 // 3) + '个:')
             try:
                 questions_num = int(inputnum)
+                if questions_num >= maxlength * 2 // 3:
+                    questions_num = maxlength * 2 // 3
+                if questions_num % 2 != 0:
+                    questions_num -= 1
             except:
                 pass
-    if questions_num >= maxlength * 2 // 3:
-        questions_num = maxlength * 2 // 3
-    if questions_num % 2 != 0:
-        questions_num -= 1
 
     # print (length)
     a = maxlength - questions_num
@@ -83,6 +83,7 @@ def mem_test(word_type):
     def next_ques_re(event):
         next_ques()
     def next_ques():
+        global questions_num
         nonlocal length, maxlength, answer, answer_com, a, b, questions, word_type, quescon_com
         # def showresult():
         #     print (answer)
@@ -109,6 +110,7 @@ def mem_test(word_type):
         if length + 1 == maxlength - questions_num - (questions_num // 2):
             # showresult()
             root.destroy()
+            questions_num = 0
             root1 = tk.Tk()
             root1.title('Words Study')
 
@@ -164,7 +166,7 @@ def display_word():
     def confirm_word_re(event):
         confirm_word()
     def confirm_word():
-        # global questions_num
+        global questions_num
         # questions_num += 1
 
         word_type = 0
@@ -185,7 +187,10 @@ def display_word():
             except:
                 pass
             label2.insert(INSERT, cn_word_all)
-            get_sound.get_s(word_type, origin_word, cn_word)
+            save_flag = get_sound.get_s(word_type, origin_word, cn_word)
+            if save_flag == 1:
+                questions_num += 1
+                # print (questions_num)
             voice_word(word_type, origin_word)
             owEt.delete('0','end')
 
@@ -196,8 +201,8 @@ def display_word():
     def engt():
         mem_test(0)
     def jpt():
-        global questions_num
-        questions_num_com = questions_num * 2 // 3
+        # global questions_num
+        # questions_num_com = questions_num * 2 // 3
         mem_test(1)
     egBt = tk.Button(frame, text = '英语训练',command = engt, width = 50, font = "微软雅黑 10")
     egBt.grid(row = 2, column = 0, padx = 15, pady = 10)
