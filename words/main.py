@@ -141,9 +141,11 @@ def mem_test(word_type):
             answer_com.append(quescon_com)
             label1.insert(INSERT, quescon)
             voice_word(word_type, quescon_com + '_cn')
+            voice_word(word_type, quescon_com)
         
     root.bind('<Return>', next_ques_re)
     voice_word(word_type, quescon_com + '_cn')
+    voice_word(word_type, quescon_com)
     root.mainloop()
 
 
