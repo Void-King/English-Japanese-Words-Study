@@ -6,9 +6,21 @@ from pydub.playback import play
 import random
 import time
 import json
+import os
 
 import get_sound
 import get_trans
+
+# AudioSegment.converter = r"D:\\Code\\Python\word\\libav\\usr\bin\\avconv.exe"
+# AudioSegment.ffmpeg = r"D:\\Code\\Python\word\\libav\\usr\bin\\avplay.exe"
+# AudioSegment.ffprobe =r"D:\\Code\\Python\word\\libav\\usr\bin\\avprobe.exe"
+
+work_path = os.getcwd()
+work_path = work_path[::-1]
+work_path = work_path[6:]
+work_path = work_path[::-1]
+print (work_path)
+os.chdir(work_path)
 
 global questions_num
 questions_num = 0
@@ -18,9 +30,10 @@ def voice_word(word_type, origin_word):
         audio_add += './words/word_sound/english/'
     else:
         audio_add += './words/word_sound/japanese/'
-    audio_name = audio_add + origin_word + '.mp3'
-    audio_name = audio_name.encode('utf-8').decode('utf-8')
+    # audio_name = audio_add + origin_word + '.mp3'
+    # audio_name = audio_name.encode('utf-8').decode('utf-8')
     sound = AudioSegment.from_mp3(audio_add + origin_word + '.mp3')
+    # print (audio_add + origin_word + '.mp3')
     play(sound)
 
 def mem_test(word_type):
