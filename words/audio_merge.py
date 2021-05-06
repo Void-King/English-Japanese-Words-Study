@@ -1,6 +1,7 @@
 from pydub import AudioSegment  # 先导入这个模块
 import os
 import re
+import json
 
 work_path = os.getcwd()
 work_path = work_path[::-1]
@@ -19,13 +20,16 @@ def mergeFunc(path, word_type):
     questions_voice = []
     wordf = ''
     if word_type == 0:
-        wordf = 'english.txt'
+        wordf = 'english.json'
     else:
-        wordf = 'japanese.txt'
-    f = open(sec + wordf, 'r')
-    for fp in f.readlines():
+        wordf = 'japanese.json'
+    f = open(sec + wordf, 'r', encoding='utf-8')
+    cur_json = json.loads(f.read())
+    f.close()
+    cur_words = cur_json["words"]
+    for word in cur_words:
         # questions.append(fp[re.search('  ', fp).span()[1]:-1])
-        questions_voice.append(fp[:re.search('  ', fp).span()[0]])
+        questions_voice.append(word["word"])
     print (questions_voice)
     output_music = AudioSegment.from_mp3(sec + '1s.mp3') 
     for name in questions_voice:
