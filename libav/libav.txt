@@ -1,0 +1,4 @@
+
+http://builds.libav.org/windows/nightly-gpl/
+http://builds.libav.org/windows/nightly-gpl/libav-x86_64-w64-mingw32-20170415.7z
+
