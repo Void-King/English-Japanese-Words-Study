@@ -7,3 +7,4 @@ libav add to path
 
 pip install simpleaudio
 pip install pydub
+pip install js2py

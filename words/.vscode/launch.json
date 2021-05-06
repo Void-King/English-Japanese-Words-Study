@@ -97,7 +97,7 @@
             "name": "Python: All debug Options",
             "type": "python",
             "request": "launch",
-            "pythonPath": "D:/Program Files (x86)/Python36",
+            "python": "D:\\Program Files\\Python",
             "program": "${file}",
             "module": "module.name",
             "env": {
